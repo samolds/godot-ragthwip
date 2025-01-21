@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://ew62twke5u2b"]
+
+[ext_resource type="Script" path="res://scripts/web.gd" id="1_ub532"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fiy8s"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymewp"]
+radius = 3.0
+
+[node name="web" type="Node2D"]
+script = ExtResource("1_ub532")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="StickyRigidBody2D" type="RigidBody2D" parent="."]
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StickyRigidBody2D"]
+shape = SubResource("CircleShape2D_fiy8s")
+
+[node name="WristRigidBody2D" type="RigidBody2D" parent="."]
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WristRigidBody2D"]
+shape = SubResource("CircleShape2D_ymewp")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../WristRigidBody2D")
+node_b = NodePath("../StickyRigidBody2D")
+length = 4.0
+stiffness = 32.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="StickyRigidBody2D" to="." method="_on_sticky_rigid_body_2d_body_entered"]
