@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b40l0v2cmp7fo"]
+[gd_scene load_steps=7 format=3 uid="uid://b40l0v2cmp7fo"]
 
 [ext_resource type="Script" path="res://scripts/ragdoll.gd" id="1_h3ct8"]
+[ext_resource type="PackedScene" uid="uid://cgcyshveos25t" path="res://scenes/anchor_spawner.tscn" id="2_ixirp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yoqyg"]
 radius = 6.0
@@ -22,6 +23,20 @@ position = Vector2(0, -34)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
 shape = SubResource("CircleShape2D_yoqyg")
+
+[node name="ColorRect" type="ColorRect" parent="head/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="neck" type="PinJoint2D" parent="head"]
 position = Vector2(0, 6)
@@ -45,11 +60,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -6.0
 offset_top = -11.0
-offset_right = 15.0
-offset_bottom = 32.0
+offset_right = 6.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.569691, 0.517918)
 
 [node name="waist" type="PinJoint2D" parent="torso"]
 position = Vector2(0, -6)
@@ -74,7 +88,11 @@ disable_collision = false
 
 [node name="Camera2D" type="Camera2D" parent="torso"]
 offset = Vector2(0, -100)
+zoom = Vector2(0.5, 0.5)
+limit_bottom = 1150
 position_smoothing_enabled = true
+
+[node name="anchor_spawner" parent="torso/Camera2D" instance=ExtResource("2_ixirp")]
 
 [node name="left_arm" type="Node2D" parent="."]
 position = Vector2(-9, -15)
@@ -84,11 +102,39 @@ position = Vector2(-9, -15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_arm/up"]
 shape = SubResource("RectangleShape2D_2d6e0")
 
+[node name="ColorRect" type="ColorRect" parent="left_arm/up/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="lower" type="RigidBody2D" parent="left_arm"]
 position = Vector2(0, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_arm/lower"]
 shape = SubResource("RectangleShape2D_2d6e0")
+
+[node name="ColorRect" type="ColorRect" parent="left_arm/lower/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="elbow" type="PinJoint2D" parent="left_arm"]
 position = Vector2(0, 12)
@@ -105,11 +151,39 @@ position = Vector2(9, -15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_arm/up"]
 shape = SubResource("RectangleShape2D_2d6e0")
 
+[node name="ColorRect" type="ColorRect" parent="right_arm/up/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="lower" type="RigidBody2D" parent="right_arm"]
 position = Vector2(0, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_arm/lower"]
 shape = SubResource("RectangleShape2D_2d6e0")
+
+[node name="ColorRect" type="ColorRect" parent="right_arm/lower/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="elbow" type="PinJoint2D" parent="right_arm"]
 position = Vector2(0, 12)
@@ -123,6 +197,20 @@ disable_collision = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pelvis"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_i8w8y")
+
+[node name="ColorRect" type="ColorRect" parent="pelvis/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="left_hip" type="PinJoint2D" parent="pelvis"]
 position = Vector2(-4, 2)
@@ -146,11 +234,39 @@ position = Vector2(-4, 14)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_leg/thigh"]
 shape = SubResource("RectangleShape2D_2d6e0")
 
+[node name="ColorRect" type="ColorRect" parent="left_leg/thigh/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="calf" type="RigidBody2D" parent="left_leg"]
 position = Vector2(0, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_leg/calf"]
 shape = SubResource("RectangleShape2D_2d6e0")
+
+[node name="ColorRect" type="ColorRect" parent="left_leg/calf/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="knee" type="PinJoint2D" parent="left_leg"]
 position = Vector2(0, 12)
@@ -167,11 +283,39 @@ position = Vector2(4, 14)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_leg/thigh"]
 shape = SubResource("RectangleShape2D_2d6e0")
 
+[node name="ColorRect" type="ColorRect" parent="right_leg/thigh/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="calf" type="RigidBody2D" parent="right_leg"]
 position = Vector2(0, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_leg/calf"]
 shape = SubResource("RectangleShape2D_2d6e0")
+
+[node name="ColorRect" type="ColorRect" parent="right_leg/calf/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="knee" type="PinJoint2D" parent="right_leg"]
 position = Vector2(0, 12)

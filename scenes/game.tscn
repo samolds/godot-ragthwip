@@ -1,185 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi6ysns8ipg06"]
+[gd_scene load_steps=3 format=3 uid="uid://bi6ysns8ipg06"]
 
 [ext_resource type="PackedScene" uid="uid://b40l0v2cmp7fo" path="res://scenes/ragdoll.tscn" id="1_7ey7u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jdpu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd2jv"]
 
 [node name="game" type="Node2D"]
 
 [node name="ragdoll" parent="." instance=ExtResource("1_7ey7u")]
 
 [node name="ground" type="StaticBody2D" parent="."]
-position = Vector2(0, 200)
+position = Vector2(0, 1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 shape = SubResource("WorldBoundaryShape2D_7jdpu")
 
-[node name="obstacle" type="StaticBody2D" parent="."]
-position = Vector2(-154, -76)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle2" type="StaticBody2D" parent="."]
-position = Vector2(254, -210)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle2"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle3" type="StaticBody2D" parent="."]
-position = Vector2(-73, -346)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle3"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle4" type="StaticBody2D" parent="."]
-position = Vector2(105, -420)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle4"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle5" type="StaticBody2D" parent="."]
-position = Vector2(137, 85)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle5"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle6" type="StaticBody2D" parent="."]
-position = Vector2(-110, -579)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle6"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle7" type="StaticBody2D" parent="."]
-position = Vector2(114, -744)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle7"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle8" type="StaticBody2D" parent="."]
-position = Vector2(-117, -804)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle8"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle9" type="StaticBody2D" parent="."]
-position = Vector2(357, -941)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle9"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle10" type="StaticBody2D" parent="."]
-position = Vector2(-227, -950)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle10"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle11" type="StaticBody2D" parent="."]
-position = Vector2(270, -1042)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle11"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle12" type="StaticBody2D" parent="."]
-position = Vector2(86, -1070)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle12"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle13" type="StaticBody2D" parent="."]
-position = Vector2(34, -1172)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle13"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle14" type="StaticBody2D" parent="."]
-position = Vector2(-115, -1228)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle14"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle15" type="StaticBody2D" parent="."]
-position = Vector2(542, -928)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle15"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle16" type="StaticBody2D" parent="."]
-position = Vector2(871, -953)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle16"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle17" type="StaticBody2D" parent="."]
-position = Vector2(1134, -962)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle17"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle18" type="StaticBody2D" parent="."]
-position = Vector2(1273, -964)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle18"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle19" type="StaticBody2D" parent="."]
-position = Vector2(676, -938)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle19"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle20" type="StaticBody2D" parent="."]
-position = Vector2(1011, -990)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle20"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle21" type="StaticBody2D" parent="."]
-position = Vector2(1399, -1006)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle21"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle22" type="StaticBody2D" parent="."]
-position = Vector2(1514, -1005)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle22"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle23" type="StaticBody2D" parent="."]
-position = Vector2(1690, -1019)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle23"]
-shape = SubResource("RectangleShape2D_cd2jv")
-
-[node name="obstacle24" type="StaticBody2D" parent="."]
-position = Vector2(1806, -1043)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle24"]
-shape = SubResource("RectangleShape2D_cd2jv")
+[node name="ColorRect" type="ColorRect" parent="ground/CollisionShape2D"]
+offset_left = -5e+06
+offset_right = 5e+06
+offset_bottom = 10.0

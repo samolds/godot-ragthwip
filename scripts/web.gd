@@ -12,9 +12,13 @@ var zdex : int
 var player : Ragdoll2D
 var hand : RigidBody2D
 var stuck : bool
+var deleted : bool
 
 @onready var sticky = $StickyRigidBody2D
 @onready var wrist = $WristRigidBody2D
+@onready var raycast = $RayCast2D
+@onready var web = $Line2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,11 +43,28 @@ func _ready() -> void:
 #	#move_and_collide(vel)
 #	pass
 
+func _physics_process(delta: float) -> void:
+	raycast.position = sticky.position
+	raycast.target_position = sticky.position + fireDir
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider is RigidBody2D:
+				print("RigidBody2D detected within raycast!")
+	
+	# TODO(sam): need to draw the web between wrist and sticky
+	web.set_point_position(0, wrist.position)
+	web.set_point_position(1, sticky.position)
+
+
 func delete() -> void:
+	if deleted:
+		return
+	
+	deleted = true
 	queue_free()
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	delete()
 
 func _on_sticky_rigid_body_2d_body_entered(body: Node) -> void:
 	if stuck:

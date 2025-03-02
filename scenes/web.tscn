@@ -10,30 +10,69 @@ radius = 3.0
 
 [node name="web" type="Node2D"]
 script = ExtResource("1_ub532")
+SPEED = 20
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 5.0
 autostart = true
 
 [node name="StickyRigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.001
 contact_monitor = true
 max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StickyRigidBody2D"]
 shape = SubResource("CircleShape2D_fiy8s")
 
+[node name="ColorRect" type="ColorRect" parent="StickyRigidBody2D/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="WristRigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.001
 contact_monitor = true
 max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WristRigidBody2D"]
 shape = SubResource("CircleShape2D_ymewp")
 
+[node name="ColorRect" type="ColorRect" parent="WristRigidBody2D/CollisionShape2D"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../WristRigidBody2D")
 node_b = NodePath("../StickyRigidBody2D")
 length = 4.0
-stiffness = 32.0
+stiffness = 30.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+hit_from_inside = true
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="StickyRigidBody2D" to="." method="_on_sticky_rigid_body_2d_body_entered"]

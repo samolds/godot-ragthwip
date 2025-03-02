@@ -22,16 +22,17 @@ func is_body_part(n: Node) -> bool:
 	return n == head or n == torso or n == left_hand or n == right_hand or n == left_foot or n == right_foot
 
 func _physics_process(_delta: float) -> void:
-	var vert = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
-	head.apply_impulse(Vector2.UP * vert * power, Vector2.ZERO)
-	left_hand.apply_impulse(Vector2.LEFT * Input.get_action_strength("ui_left") * power, Vector2.ZERO)
-	left_foot.apply_impulse(Vector2.LEFT * Input.get_action_strength("ui_left") * power, Vector2.ZERO)
-	right_hand.apply_impulse(Vector2.RIGHT * Input.get_action_strength("ui_right") * power, Vector2.ZERO)
-	right_foot.apply_impulse(Vector2.RIGHT * Input.get_action_strength("ui_right") * power, Vector2.ZERO)
+	#var vert = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
+	#head.apply_impulse(Vector2.UP * vert * power, Vector2.ZERO)
+	#left_hand.apply_impulse(Vector2.LEFT * Input.get_action_strength("ui_left") * power, Vector2.ZERO)
+	#left_foot.apply_impulse(Vector2.LEFT * Input.get_action_strength("ui_left") * power, Vector2.ZERO)
+	#right_hand.apply_impulse(Vector2.RIGHT * Input.get_action_strength("ui_right") * power, Vector2.ZERO)
+	#right_foot.apply_impulse(Vector2.RIGHT * Input.get_action_strength("ui_right") * power, Vector2.ZERO)
 
+	# TODO(sam): update this to require holding the key (Input.is_action_pressed("left"/"right"))
+	# for both left and right. when releasing the key, it should release holding the web
 	if Input.is_action_just_pressed("ui_accept"):
 		shoot()
-	
 
 func shoot() -> void:
 	var hand = null
@@ -47,13 +48,13 @@ func shoot() -> void:
 	instance.spawnPos = hand.global_position
 	instance.zdex = z_index - 1
 
-	if webs_fired % 2 == 0:	
-		if left_web:
+	if webs_fired % 2 == 0:
+		if is_instance_valid(left_web):
 			left_web.delete()
 			left_web = null
 		left_web = instance
 	else:
-		if right_web:
+		if is_instance_valid(right_web):
 			right_web.delete()
 			right_web = null
 		right_web = instance
